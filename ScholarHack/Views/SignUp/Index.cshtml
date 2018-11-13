@@ -1,0 +1,201 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="~/Content/fontawesome/all.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Sign Up/SignUp.css" rel="stylesheet" />
+
+    <style>
+        .show {
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    @*Nav Bar*@
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
+        <div class="container" id="navcontainer">
+            <a class="navbar-brand" href="/Home/Index">
+                <i class="fas fa-graduation-cap fa-2x"></i>
+                Online Exam Center
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Feature</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Solution</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Clients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Login/Index">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/SignUp/Index">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="hero_background-image" style=""></div>
+
+<div class="container" id="signup">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <section style="display: flex; justify-content: center;">
+                        <a class="text-center text-uppercase" style="margin-bottom: 0;font-weight: 300; font-size: 1.5rem;">Sign Up Here</a>
+                    </section>
+                    <hr id="SingUpHere_hr" />
+
+                    <div style="display: flex; justify-content: space-around;">
+                        <a class="card-title text-center active" id="Student">As a Student</a>
+                        <a class="card-title text-center" id="Teacher">As a teacher</a>
+                    </div>
+                    <form class="form-signin" id="Student_Form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="First Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Last Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" id="Password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="ConfirmPassword" class="form-control" placeholder="Confirm Password" required>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-4 pl-4 pr-4">Gender</div>
+                            <div class="form-check form-check-inline ml-3 mr-3">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <label class="form-check-label" for="inlineRadio1">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline ml-4">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <label class="form-check-label" for="inlineRadio2">Female</label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-lg btn-outline-success btn-block text-uppercase" type="submit">Sign Up</button>
+                        @*<hr class="my-4">
+                                <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
+                                <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>*@
+                    </form>
+                    <form class="form-signin hide" id="Teacher_Form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="First Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Last Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email address" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Confirm Password" required>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-4 pl-4 pr-4">Gender</div>
+                            <div class="form-check form-check-inline ml-3 mr-3">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <label class="form-check-label" for="inlineRadio1">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline ml-4">
+
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <label class="form-check-label" for="inlineRadio2">Female</label>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3 mr-sm-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text" style="border-radius: 5.0rem 0 0 5.0rem;">+880 1</div>
+                            </div>
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Mobile No">
+                        </div>
+                        <button class="btn btn-lg btn-outline-success btn-block text-uppercase" type="submit">Sign Up</button>
+                        @*<hr class="my-4">
+                                <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>
+                                <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>*@
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/popper.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        $('#Student').click(function (e) {
+
+            //$("#Student_Form").delay(100).fadeIn(100);
+            //$("#Teacher_Form").fadeOut(100);
+
+            $("#Teacher").removeClass("active");
+            $("#Teacher_Form").removeClass("show");
+            $("#Teacher_Form").addClass("hide");
+
+            $("#Student").addClass("active");
+            $("#Student_Form").removeClass("hide");
+            $("#Student_Form").addClass("show");
+            e.preventDefault();
+
+        });
+
+        $('#Teacher').click(function (e) {
+
+            //$("#Teacher_Form").delay(100).fadeIn(100);
+            //$("#Student_Form").fadeOut(100);
+
+            $("#Student").removeClass("active");
+            $("#Student_Form").removeClass("show");
+            $("#Student_Form").addClass("hide");
+
+            $("#Teacher").addClass("active");
+            $("#Teacher_Form").addClass("show");
+            $("#Teacher_Form").removeClass("hide");
+            e.preventDefault();
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="~/Content/fontawesome/all.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <style>
+        body {
+            /*font-family: 'Oswald', sans-serif;*/
+            text-decoration: none;
+        }
+        .navbar {
+            padding: 10px 0;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 300;
+        }
+        
+        .navbar-brand {
+            font-size: 18px;
+            padding-bottom: 14px;
+        }
+
+        #navcontainer {
+            margin-left: 10%;
+            margin-right: 10%;
+            min-width: 71%;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body style="background-color: #f3f7f7">
+
+    @*Nav Bar*@
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
+        <div class="container" id="navcontainer">
+            <a class="navbar-brand" href="/Student/Index">
+                <i class="fas fa-graduation-cap fa-2x"></i>
+                Online Exam Center
+            </a>
+            
+            @*<ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Student/Index">Dashboard</a>
+                </li>
+            </ul>*@
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item mr-auto">
+                        <a class="nav-link" href="/Student/Index">
+                            <i class="fas fa-home"></i> Dashboard
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user"> Sezan Haque</i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/Student/Edit">
+                                <i class="fa fa-user-edit"></i> Settings
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fa fa-user-times"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    @*Nav Bar Done*@
+
+    @*<nav class="navbar navbar-dark bg-dark navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="/Student/Index">Virtual Judge Panel</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Student/Index">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Student/Index">Jobs</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown mr-3">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user"> @Session["email"]</i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/Student/Edit/@Session["id"]">
+                                    <i class="fa fa-user-edit"></i> Settings
+                                </a>
+                                <a class="dropdown-item" href="/Logout/Index">
+                                    <i class="fa fa-user-times"></i> Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>*@
+
+    @RenderBody()
+    <br /><br />
+</body>
+</html>
