@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Repo.EventStatu>
+
+@{
+    ViewBag.Title = "EventStatus";
+}
+
+<h2>EventStatus</h2>
+
+<p>
+    <form method="post">
+        <input name="EventStatusName" /> <input type="submit" value="Add" />
+    </form>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EventStatusName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventStatusName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EventStatusID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EventStatusID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EventStatusID })
+        </td>
+    </tr>
+}
+
+</table>

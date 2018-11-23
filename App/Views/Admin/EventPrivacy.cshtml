@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Repo.EventType>
+
+@{
+    ViewBag.Title = "EventPrivacy";
+}
+
+<h2>EventPrivacy</h2>
+
+<p>
+    <form method="post">
+        <input name="EventTypeName" /> <input type="submit" value="Add" />
+    </form>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EventTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventTypeDescription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventTypeDescription)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EventTypeID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EventTypeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EventTypeID })
+        </td>
+    </tr>
+}
+
+</table>

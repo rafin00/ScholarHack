@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c243215841984920abb2140246b66672" Name="Diagram1">
+        <EntityTypeShape EntityType="ScholarHackDBModel.AccountType" Width="1.5" PointX="0.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.Career" Width="1.5" PointX="5.25" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.CourseResult" Width="1.5" PointX="8.25" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.EducationalHistory" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.Event" Width="1.5" PointX="5.25" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.EventAnswer" Width="1.5" PointX="12.75" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.EventInvitation" Width="1.5" PointX="7.5" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.EventInvitationStatu" Width="1.5" PointX="5.25" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.EventQuestion" Width="1.5" PointX="15.75" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.EventRegistration" Width="1.5" PointX="10.5" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.EventRegistrationStatu" Width="1.5" PointX="8.25" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.EventReport" Width="1.5" PointX="15.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.EventStatu" Width="1.5" PointX="3" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.EventType" Width="1.5" PointX="3" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.Institution" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.InstitutionCategory" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.InstitutionCategoryType" Width="1.5" PointX="3.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.Organization" Width="1.5" PointX="3" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.Question" Width="1.5" PointX="10.5" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.QuestionDifficulty" Width="1.5" PointX="8.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.QuestionOption" Width="1.5" PointX="12.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.QuestionRepository" Width="1.5" PointX="8.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.QuestionSubject" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.QuestionType" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.Result" Width="1.5" PointX="10.5" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.Subject" Width="1.5" PointX="7.5" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.UserInfo" Width="1.5" PointX="3" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.UserStatu" Width="1.5" PointX="0.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.UserType" Width="1.5" PointX="0.75" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.SystemConfig" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_UserInfo_AccountType" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_Career_Organization" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_Career_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_CourseResult_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_CourseResult_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_EducationalHistory_Institution" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_EducationalHistory_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_Event_EventStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_Event_EventType" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_Event_InstitutionCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_Event_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_EventAnswer_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_EventInvitation_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_EventQuestion_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_EventRegistration_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_EventReport_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_Result_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_EventAnswer_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_EventAnswer_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_EventInvitation_EventInvitationStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_EventInvitation_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_EventQuestion_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_EventRegistration_EventRegistrationStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_EventRegistration_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_EventReport_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_EventReport_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_InstitutionCategory_InstitutionCategoryType" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_QuestionRepository_InstitutionCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_Subject_InstitutionCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_Question_QuestionDifficulty" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_Question_QuestionRepository" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_Question_QuestionSubject" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_Question_QuestionType" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_QuestionOption_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_QuestionRepository_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_Result_UserInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_UserInfo_UserStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.FK_UserInfo_UserType" ManuallyRouted="false" />
+        <AssociationConnector Association="ScholarHackDBModel.EventSubject" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

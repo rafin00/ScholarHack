@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Repo.InstitutionCategory>
+
+@{
+    ViewBag.Title = "InstitutionCategoryClass";
+}
+
+<h2>InstitutionCategoryClass</h2>
+
+<p>
+    <form method="post">
+        <input name="InstitutionCategoryClass" /> <input type="submit" value="Add" />
+    </form>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InstitutionCategoryClass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstitutionCategoryType.InstitutionCategoryTypeName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstitutionCategoryClass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstitutionCategoryType.InstitutionCategoryTypeName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.InstitutionCategoryID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.InstitutionCategoryID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.InstitutionCategoryID })
+        </td>
+    </tr>
+}
+
+</table>

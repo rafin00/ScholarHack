@@ -1,0 +1,129 @@
+﻿@model Repo.UserInfo
+
+@{
+    ViewBag.Title = "NewUser";
+}
+
+<h2>NewUser</h2>
+
+<form  method="post" enctype="multipart/form-data">
+    
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>UserInfo</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            Subscription Type :
+            @foreach (var acctype in TempData["Acctype"] as  IEnumerable<Repo.AccountType>)
+            {
+
+                <input type="radio" name="AccountTypeID" value="@acctype.AccountTypeID" />@acctype.AccountTypeName
+
+            }
+        </div>
+
+        <div class="form-group">
+            User Type :
+            @foreach (var usertype in TempData["Usertype"] as IEnumerable<Repo.UserType>)
+            {
+
+                <input type="radio" name="UserTypeID" value="@usertype.UserTypeID" />@usertype.UserTypeName
+
+            }
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Portfolio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="Portfolio">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProfilePic, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="ProfilePic">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TotalHostedEvents, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TotalHostedEvents, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TotalHostedEvents, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TotalParticipants, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TotalParticipants, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TotalParticipants, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TotalEventsAttended, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TotalEventsAttended, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TotalEventsAttended, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Account Type :
+            @foreach (var userstatus in @TempData["UserStatus"] as IEnumerable<Repo.UserStatu>)
+            {
+
+                <input type="radio" name="StatusID" value="@userstatus.StatusID" />@userstatus.StatusName
+            }
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    
+    </form>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

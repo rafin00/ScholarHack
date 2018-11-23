@@ -1,0 +1,122 @@
+﻿@model Repo.UserInfo
+
+@{
+    ViewBag.Title = "UserDetail";
+}
+
+<h2>UserDetail</h2>
+
+<div>
+    <h4>UserInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JoiningDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JoiningDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Portfolio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Portfolio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfilePic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfilePic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalHostedEvents)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalHostedEvents)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalParticipants)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalParticipants)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalEventsAttended)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalEventsAttended)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountType.AccountTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountType.AccountTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserStatu.StatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserStatu.StatusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserType.UserTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserType.UserTypeName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
