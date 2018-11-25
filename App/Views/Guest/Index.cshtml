@@ -29,7 +29,7 @@
 
 <body>
    
-    @Html.ActionLink("Login", "Login","Login")
+   
 
     <div class="nav">
         <h2 href="#" class="logo">
@@ -49,8 +49,8 @@
             <a href="#">Feature</a>
             <a href="#">Solution</a>
             <a href="#">Clients</a>
-            <a href="/Login/Index">Login</a>
-            <a href="/SignUp/Index">Sign Up</a>
+            @Html.ActionLink("Login", "Login", "Login")
+            <a href="Login/SignUp">Sign Up</a>
         </div>
     </div>
     <div class="background-image" style="background-image: url(/Content/img/bg4.jpg);"></div>

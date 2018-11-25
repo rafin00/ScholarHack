@@ -1,0 +1,12 @@
+﻿@model Repo.QuestionBank
+@{
+    ViewBag.Title = "ImportFile";
+}
+
+<h2>ImportFile</h2>
+<form method="post" action="./AddQuestionToBank?QuestionBankID=@Model.QuestionBankID">
+    <input type="file" name="LoadFile" />
+    <div name="viewquestions"></div>
+    <input type="submit" value="Add Questions" />
+   
+</form>

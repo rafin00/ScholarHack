@@ -158,6 +158,14 @@
     <Content Include="Views\Admin\QuestionDifficulty.cshtml" />
     <Content Include="Views\Admin\QuestionType.cshtml" />
     <Content Include="Views\Admin\Subject.cshtml" />
+    <Content Include="Views\Login\SignUp.cshtml" />
+    <Content Include="Views\Teacher\Index.cshtml" />
+    <Content Include="Views\Teacher\CreateEvent.cshtml" />
+    <Content Include="Views\Teacher\AddQuestionEvent.cshtml" />
+    <Content Include="Views\Teacher\UserQuestionBank.cshtml" />
+    <Content Include="Views\Teacher\AddQuestionToBank.cshtml" />
+    <Content Include="Views\Teacher\CreateBank.cshtml" />
+    <Content Include="Views\Teacher\ImportFile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -170,7 +178,6 @@
     <Folder Include="App_Data\ProPic\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Teacher\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

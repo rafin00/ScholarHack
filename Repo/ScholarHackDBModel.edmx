@@ -194,6 +194,16 @@
           <Property Name="QuestionSolutionImage" Type="varchar" MaxLength="50" />
           <Property Name="QuestionRepositoryID" Type="int" />
         </EntityType>
+        <EntityType Name="QuestionBank">
+          <Key>
+            <PropertyRef Name="QuestionBankID" />
+          </Key>
+          <Property Name="QuestionBankID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionBankName" Type="varchar" MaxLength="50" />
+          <Property Name="InstitutionCategoryID" Type="int" />
+          <Property Name="OwnerID" Type="int" />
+          <Property Name="IsPublic" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="QuestionDifficulty">
           <Key>
             <PropertyRef Name="QuestionDifficultyID" />
@@ -208,16 +218,6 @@
           </Key>
           <Property Name="QuestionID" Type="int" Nullable="false" />
           <Property Name="OptionText" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="QuestionRepository">
-          <Key>
-            <PropertyRef Name="QuestionRepositoryID" />
-          </Key>
-          <Property Name="QuestionRepositoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="QuestionRepositoryName" Type="varchar" MaxLength="50" />
-          <Property Name="InstitutionCategoryID" Type="int" />
-          <Property Name="OwnerID" Type="int" />
-          <Property Name="IsPublic" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="QuestionSubject">
           <Key>
@@ -643,11 +643,11 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Question_QuestionRepository">
-          <End Role="QuestionRepository" Type="Self.QuestionRepository" Multiplicity="0..1" />
+          <End Role="QuestionBank" Type="Self.QuestionBank" Multiplicity="0..1" />
           <End Role="Question" Type="Self.Question" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="QuestionRepository">
-              <PropertyRef Name="QuestionRepositoryID" />
+            <Principal Role="QuestionBank">
+              <PropertyRef Name="QuestionBankID" />
             </Principal>
             <Dependent Role="Question">
               <PropertyRef Name="QuestionRepositoryID" />
@@ -692,24 +692,24 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
         </Association>
         <Association Name="FK_QuestionRepository_InstitutionCategory">
           <End Role="InstitutionCategory" Type="Self.InstitutionCategory" Multiplicity="0..1" />
-          <End Role="QuestionRepository" Type="Self.QuestionRepository" Multiplicity="*" />
+          <End Role="QuestionBank" Type="Self.QuestionBank" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="InstitutionCategory">
               <PropertyRef Name="InstitutionCategoryID" />
             </Principal>
-            <Dependent Role="QuestionRepository">
+            <Dependent Role="QuestionBank">
               <PropertyRef Name="InstitutionCategoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_QuestionRepository_UserInfo">
           <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
-          <End Role="QuestionRepository" Type="Self.QuestionRepository" Multiplicity="*" />
+          <End Role="QuestionBank" Type="Self.QuestionBank" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserInfo">
               <PropertyRef Name="UserID" />
             </Principal>
-            <Dependent Role="QuestionRepository">
+            <Dependent Role="QuestionBank">
               <PropertyRef Name="OwnerID" />
             </Dependent>
           </ReferentialConstraint>
@@ -807,9 +807,9 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
           <EntitySet Name="InstitutionCategoryType" EntityType="Self.InstitutionCategoryType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuestionBank" EntityType="Self.QuestionBank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuestionDifficulty" EntityType="Self.QuestionDifficulty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuestionOption" EntityType="Self.QuestionOption" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="QuestionRepository" EntityType="Self.QuestionRepository" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuestionSubject" EntityType="Self.QuestionSubject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuestionType" EntityType="Self.QuestionType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Result" EntityType="Self.Result" Schema="dbo" store:Type="Tables" />
@@ -940,7 +940,7 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
             <End Role="Question" EntitySet="Question" />
           </AssociationSet>
           <AssociationSet Name="FK_Question_QuestionRepository" Association="Self.FK_Question_QuestionRepository">
-            <End Role="QuestionRepository" EntitySet="QuestionRepository" />
+            <End Role="QuestionBank" EntitySet="QuestionBank" />
             <End Role="Question" EntitySet="Question" />
           </AssociationSet>
           <AssociationSet Name="FK_Question_QuestionSubject" Association="Self.FK_Question_QuestionSubject">
@@ -957,11 +957,11 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
           </AssociationSet>
           <AssociationSet Name="FK_QuestionRepository_InstitutionCategory" Association="Self.FK_QuestionRepository_InstitutionCategory">
             <End Role="InstitutionCategory" EntitySet="InstitutionCategory" />
-            <End Role="QuestionRepository" EntitySet="QuestionRepository" />
+            <End Role="QuestionBank" EntitySet="QuestionBank" />
           </AssociationSet>
           <AssociationSet Name="FK_QuestionRepository_UserInfo" Association="Self.FK_QuestionRepository_UserInfo">
             <End Role="UserInfo" EntitySet="UserInfo" />
-            <End Role="QuestionRepository" EntitySet="QuestionRepository" />
+            <End Role="QuestionBank" EntitySet="QuestionBank" />
           </AssociationSet>
           <AssociationSet Name="FK_Result_Event" Association="Self.FK_Result_Event">
             <End Role="Event" EntitySet="Event" />
@@ -1183,7 +1183,7 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
           <Property Name="InstitutionCategoryClass" Type="Int32" />
           <NavigationProperty Name="Events" Relationship="Self.FK_Event_InstitutionCategory" FromRole="InstitutionCategory" ToRole="Event" />
           <NavigationProperty Name="InstitutionCategoryType" Relationship="Self.FK_InstitutionCategory_InstitutionCategoryType" FromRole="InstitutionCategory" ToRole="InstitutionCategoryType" />
-          <NavigationProperty Name="QuestionRepositories" Relationship="Self.FK_QuestionRepository_InstitutionCategory" FromRole="InstitutionCategory" ToRole="QuestionRepository" />
+          <NavigationProperty Name="QuestionBanks" Relationship="Self.FK_QuestionRepository_InstitutionCategory" FromRole="InstitutionCategory" ToRole="QuestionBank" />
           <NavigationProperty Name="Subjects" Relationship="Self.FK_Subject_InstitutionCategory" FromRole="InstitutionCategory" ToRole="Subject" />
         </EntityType>
         <EntityType Name="InstitutionCategoryType">
@@ -1220,10 +1220,23 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
           <NavigationProperty Name="EventQuestions" Relationship="Self.FK_EventQuestion_Question" FromRole="Question" ToRole="EventQuestion" />
           <NavigationProperty Name="EventReports" Relationship="Self.FK_EventReport_Question" FromRole="Question" ToRole="EventReport" />
           <NavigationProperty Name="QuestionDifficulty" Relationship="Self.FK_Question_QuestionDifficulty" FromRole="Question" ToRole="QuestionDifficulty" />
-          <NavigationProperty Name="QuestionRepository" Relationship="Self.FK_Question_QuestionRepository" FromRole="Question" ToRole="QuestionRepository" />
+          <NavigationProperty Name="QuestionBank" Relationship="Self.FK_Question_QuestionRepository" FromRole="Question" ToRole="QuestionBank" />
           <NavigationProperty Name="QuestionSubject" Relationship="Self.FK_Question_QuestionSubject" FromRole="Question" ToRole="QuestionSubject" />
           <NavigationProperty Name="QuestionType" Relationship="Self.FK_Question_QuestionType" FromRole="Question" ToRole="QuestionType" />
           <NavigationProperty Name="QuestionOptions" Relationship="Self.FK_QuestionOption_Question" FromRole="Question" ToRole="QuestionOption" />
+        </EntityType>
+        <EntityType Name="QuestionBank">
+          <Key>
+            <PropertyRef Name="QuestionBankID" />
+          </Key>
+          <Property Name="QuestionBankID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionBankName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InstitutionCategoryID" Type="Int32" />
+          <Property Name="OwnerID" Type="Int32" />
+          <Property Name="IsPublic" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="InstitutionCategory" Relationship="Self.FK_QuestionRepository_InstitutionCategory" FromRole="QuestionBank" ToRole="InstitutionCategory" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK_Question_QuestionRepository" FromRole="QuestionBank" ToRole="Question" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK_QuestionRepository_UserInfo" FromRole="QuestionBank" ToRole="UserInfo" />
         </EntityType>
         <EntityType Name="QuestionDifficulty">
           <Key>
@@ -1241,19 +1254,6 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
           <Property Name="QuestionID" Type="Int32" Nullable="false" />
           <Property Name="OptionText" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Question" Relationship="Self.FK_QuestionOption_Question" FromRole="QuestionOption" ToRole="Question" />
-        </EntityType>
-        <EntityType Name="QuestionRepository">
-          <Key>
-            <PropertyRef Name="QuestionRepositoryID" />
-          </Key>
-          <Property Name="QuestionRepositoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="QuestionRepositoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="InstitutionCategoryID" Type="Int32" />
-          <Property Name="OwnerID" Type="Int32" />
-          <Property Name="IsPublic" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="InstitutionCategory" Relationship="Self.FK_QuestionRepository_InstitutionCategory" FromRole="QuestionRepository" ToRole="InstitutionCategory" />
-          <NavigationProperty Name="Questions" Relationship="Self.FK_Question_QuestionRepository" FromRole="QuestionRepository" ToRole="Question" />
-          <NavigationProperty Name="UserInfo" Relationship="Self.FK_QuestionRepository_UserInfo" FromRole="QuestionRepository" ToRole="UserInfo" />
         </EntityType>
         <EntityType Name="QuestionSubject">
           <Key>
@@ -1330,7 +1330,7 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
           <NavigationProperty Name="EventInvitations" Relationship="Self.FK_EventInvitation_UserInfo" FromRole="UserInfo" ToRole="EventInvitation" />
           <NavigationProperty Name="EventRegistrations" Relationship="Self.FK_EventRegistration_UserInfo" FromRole="UserInfo" ToRole="EventRegistration" />
           <NavigationProperty Name="EventReports" Relationship="Self.FK_EventReport_UserInfo" FromRole="UserInfo" ToRole="EventReport" />
-          <NavigationProperty Name="QuestionRepositories" Relationship="Self.FK_QuestionRepository_UserInfo" FromRole="UserInfo" ToRole="QuestionRepository" />
+          <NavigationProperty Name="QuestionBanks" Relationship="Self.FK_QuestionRepository_UserInfo" FromRole="UserInfo" ToRole="QuestionBank" />
           <NavigationProperty Name="Results" Relationship="Self.FK_Result_UserInfo" FromRole="UserInfo" ToRole="Result" />
           <NavigationProperty Name="UserStatu" Relationship="Self.FK_UserInfo_UserStatus" FromRole="UserInfo" ToRole="UserStatus" />
           <NavigationProperty Name="UserType" Relationship="Self.FK_UserInfo_UserType" FromRole="UserInfo" ToRole="UserType" />
@@ -1688,12 +1688,12 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
         </Association>
         <Association Name="FK_QuestionRepository_InstitutionCategory">
           <End Role="InstitutionCategory" Type="Self.InstitutionCategory" Multiplicity="0..1" />
-          <End Role="QuestionRepository" Type="Self.QuestionRepository" Multiplicity="*" />
+          <End Role="QuestionBank" Type="Self.QuestionBank" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="InstitutionCategory">
               <PropertyRef Name="InstitutionCategoryID" />
             </Principal>
-            <Dependent Role="QuestionRepository">
+            <Dependent Role="QuestionBank">
               <PropertyRef Name="InstitutionCategoryID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1723,11 +1723,11 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Question_QuestionRepository">
-          <End Role="QuestionRepository" Type="Self.QuestionRepository" Multiplicity="0..1" />
+          <End Role="QuestionBank" Type="Self.QuestionBank" Multiplicity="0..1" />
           <End Role="Question" Type="Self.Question" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="QuestionRepository">
-              <PropertyRef Name="QuestionRepositoryID" />
+            <Principal Role="QuestionBank">
+              <PropertyRef Name="QuestionBankID" />
             </Principal>
             <Dependent Role="Question">
               <PropertyRef Name="QuestionRepositoryID" />
@@ -1772,12 +1772,12 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
         </Association>
         <Association Name="FK_QuestionRepository_UserInfo">
           <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
-          <End Role="QuestionRepository" Type="Self.QuestionRepository" Multiplicity="*" />
+          <End Role="QuestionBank" Type="Self.QuestionBank" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserInfo">
               <PropertyRef Name="UserID" />
             </Principal>
-            <Dependent Role="QuestionRepository">
+            <Dependent Role="QuestionBank">
               <PropertyRef Name="OwnerID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1842,9 +1842,9 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
           <EntitySet Name="InstitutionCategoryTypes" EntityType="Self.InstitutionCategoryType" />
           <EntitySet Name="Organizations" EntityType="Self.Organization" />
           <EntitySet Name="Questions" EntityType="Self.Question" />
+          <EntitySet Name="QuestionBanks" EntityType="Self.QuestionBank" />
           <EntitySet Name="QuestionDifficulties" EntityType="Self.QuestionDifficulty" />
           <EntitySet Name="QuestionOptions" EntityType="Self.QuestionOption" />
-          <EntitySet Name="QuestionRepositories" EntityType="Self.QuestionRepository" />
           <EntitySet Name="QuestionSubjects" EntityType="Self.QuestionSubject" />
           <EntitySet Name="QuestionTypes" EntityType="Self.QuestionType" />
           <EntitySet Name="Results" EntityType="Self.Result" />
@@ -1964,7 +1964,7 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
           </AssociationSet>
           <AssociationSet Name="FK_QuestionRepository_InstitutionCategory" Association="Self.FK_QuestionRepository_InstitutionCategory">
             <End Role="InstitutionCategory" EntitySet="InstitutionCategories" />
-            <End Role="QuestionRepository" EntitySet="QuestionRepositories" />
+            <End Role="QuestionBank" EntitySet="QuestionBanks" />
           </AssociationSet>
           <AssociationSet Name="FK_Subject_InstitutionCategory" Association="Self.FK_Subject_InstitutionCategory">
             <End Role="InstitutionCategory" EntitySet="InstitutionCategories" />
@@ -1975,7 +1975,7 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
             <End Role="Question" EntitySet="Questions" />
           </AssociationSet>
           <AssociationSet Name="FK_Question_QuestionRepository" Association="Self.FK_Question_QuestionRepository">
-            <End Role="QuestionRepository" EntitySet="QuestionRepositories" />
+            <End Role="QuestionBank" EntitySet="QuestionBanks" />
             <End Role="Question" EntitySet="Questions" />
           </AssociationSet>
           <AssociationSet Name="FK_Question_QuestionSubject" Association="Self.FK_Question_QuestionSubject">
@@ -1992,7 +1992,7 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
           </AssociationSet>
           <AssociationSet Name="FK_QuestionRepository_UserInfo" Association="Self.FK_QuestionRepository_UserInfo">
             <End Role="UserInfo" EntitySet="UserInfoes" />
-            <End Role="QuestionRepository" EntitySet="QuestionRepositories" />
+            <End Role="QuestionBank" EntitySet="QuestionBanks" />
           </AssociationSet>
           <AssociationSet Name="FK_Result_UserInfo" Association="Self.FK_Result_UserInfo">
             <End Role="UserInfo" EntitySet="UserInfoes" />
@@ -2216,6 +2216,17 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="QuestionBanks">
+            <EntityTypeMapping TypeName="ScholarHackDBModel.QuestionBank">
+              <MappingFragment StoreEntitySet="QuestionBank">
+                <ScalarProperty Name="QuestionBankID" ColumnName="QuestionBankID" />
+                <ScalarProperty Name="QuestionBankName" ColumnName="QuestionBankName" />
+                <ScalarProperty Name="InstitutionCategoryID" ColumnName="InstitutionCategoryID" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="IsPublic" ColumnName="IsPublic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="QuestionDifficulties">
             <EntityTypeMapping TypeName="ScholarHackDBModel.QuestionDifficulty">
               <MappingFragment StoreEntitySet="QuestionDifficulty">
@@ -2229,17 +2240,6 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
               <MappingFragment StoreEntitySet="QuestionOption">
                 <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
                 <ScalarProperty Name="OptionText" ColumnName="OptionText" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="QuestionRepositories">
-            <EntityTypeMapping TypeName="ScholarHackDBModel.QuestionRepository">
-              <MappingFragment StoreEntitySet="QuestionRepository">
-                <ScalarProperty Name="QuestionRepositoryID" ColumnName="QuestionRepositoryID" />
-                <ScalarProperty Name="QuestionRepositoryName" ColumnName="QuestionRepositoryName" />
-                <ScalarProperty Name="InstitutionCategoryID" ColumnName="InstitutionCategoryID" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-                <ScalarProperty Name="IsPublic" ColumnName="IsPublic" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

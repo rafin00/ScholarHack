@@ -113,13 +113,13 @@
     <Compile Include="Question.cs">
       <DependentUpon>ScholarHackDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="QuestionBank.cs">
+      <DependentUpon>ScholarHackDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="QuestionDifficulty.cs">
       <DependentUpon>ScholarHackDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="QuestionOption.cs">
-      <DependentUpon>ScholarHackDBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="QuestionRepository.cs">
       <DependentUpon>ScholarHackDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="QuestionSubject.cs">
@@ -139,6 +139,7 @@
     <Compile Include="Repository\InstitutionRepository.cs" />
     <Compile Include="Repository\OrganizationRepository.cs" />
     <Compile Include="Repository\AllQuestionRepository.cs" />
+    <Compile Include="Repository\QuestionBankRepository.cs" />
     <Compile Include="Repository\QuestionDifficultyRepository.cs" />
     <Compile Include="Repository\QuestionTypeRepository.cs" />
     <Compile Include="Repository\Repository.cs" />

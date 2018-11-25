@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Repo.Event>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Question Bank", "UserQuestionBank")
+    @Html.ActionLink("Create New", "CreateEvent")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EventName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPublic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalMarks)
+        </th>
+       
+       
+        <th>
+            @Html.DisplayNameFor(model => model.EventType.EventTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstitutionCategory.InstitutionCategoryID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserInfo.FirstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsPublic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalMarks)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.EventType.EventTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstitutionCategory.InstitutionCategoryID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserInfo.FirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EventID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EventID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EventID })
+        </td>
+    </tr>
+}
+
+</table>

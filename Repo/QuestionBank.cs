@@ -12,16 +12,16 @@ namespace Repo
     using System;
     using System.Collections.Generic;
     
-    public partial class QuestionRepository
+    public partial class QuestionBank
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public QuestionRepository()
+        public QuestionBank()
         {
             this.Questions = new HashSet<Question>();
         }
     
-        public int QuestionRepositoryID { get; set; }
-        public string QuestionRepositoryName { get; set; }
+        public int QuestionBankID { get; set; }
+        public string QuestionBankName { get; set; }
         public Nullable<int> InstitutionCategoryID { get; set; }
         public Nullable<int> OwnerID { get; set; }
         public bool IsPublic { get; set; }

@@ -18,7 +18,7 @@ namespace Repo
         public InstitutionCategory()
         {
             this.Events = new HashSet<Event>();
-            this.QuestionRepositories = new HashSet<QuestionRepository>();
+            this.QuestionBanks = new HashSet<QuestionBank>();
             this.Subjects = new HashSet<Subject>();
         }
     
@@ -30,7 +30,7 @@ namespace Repo
         public virtual ICollection<Event> Events { get; set; }
         public virtual InstitutionCategoryType InstitutionCategoryType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<QuestionRepository> QuestionRepositories { get; set; }
+        public virtual ICollection<QuestionBank> QuestionBanks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subject> Subjects { get; set; }
     }

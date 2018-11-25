@@ -25,7 +25,7 @@ namespace Repo
             this.EventInvitations = new HashSet<EventInvitation>();
             this.EventRegistrations = new HashSet<EventRegistration>();
             this.EventReports = new HashSet<EventReport>();
-            this.QuestionRepositories = new HashSet<QuestionRepository>();
+            this.QuestionBanks = new HashSet<QuestionBank>();
             this.Results = new HashSet<Result>();
         }
     
@@ -62,7 +62,7 @@ namespace Repo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EventReport> EventReports { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<QuestionRepository> QuestionRepositories { get; set; }
+        public virtual ICollection<QuestionBank> QuestionBanks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Result> Results { get; set; }
         public virtual UserStatu UserStatu { get; set; }

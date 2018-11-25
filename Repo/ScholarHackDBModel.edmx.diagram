@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c243215841984920abb2140246b66672" Name="Diagram1">
+      <Diagram DiagramId="8487a0db0551474b9ab441af01a4eadc" Name="Diagram1">
         <EntityTypeShape EntityType="ScholarHackDBModel.AccountType" Width="1.5" PointX="0.75" PointY="20" IsExpanded="true" />
         <EntityTypeShape EntityType="ScholarHackDBModel.Career" Width="1.5" PointX="5.25" PointY="19.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ScholarHackDBModel.CourseResult" Width="1.5" PointX="8.25" PointY="19.75" IsExpanded="true" />
@@ -24,9 +24,9 @@
         <EntityTypeShape EntityType="ScholarHackDBModel.InstitutionCategoryType" Width="1.5" PointX="3.75" PointY="12" IsExpanded="true" />
         <EntityTypeShape EntityType="ScholarHackDBModel.Organization" Width="1.5" PointX="3" PointY="25" IsExpanded="true" />
         <EntityTypeShape EntityType="ScholarHackDBModel.Question" Width="1.5" PointX="10.5" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ScholarHackDBModel.QuestionBank" Width="1.5" PointX="8.25" PointY="15.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ScholarHackDBModel.QuestionDifficulty" Width="1.5" PointX="8.25" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ScholarHackDBModel.QuestionOption" Width="1.5" PointX="12.75" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="ScholarHackDBModel.QuestionRepository" Width="1.5" PointX="8.25" PointY="15.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ScholarHackDBModel.QuestionSubject" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="ScholarHackDBModel.QuestionType" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ScholarHackDBModel.Result" Width="1.5" PointX="10.5" PointY="25.125" IsExpanded="true" />

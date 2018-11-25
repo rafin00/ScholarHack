@@ -44,9 +44,9 @@ namespace Repo
         public virtual DbSet<InstitutionCategoryType> InstitutionCategoryTypes { get; set; }
         public virtual DbSet<Organization> Organizations { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
+        public virtual DbSet<QuestionBank> QuestionBanks { get; set; }
         public virtual DbSet<QuestionDifficulty> QuestionDifficulties { get; set; }
         public virtual DbSet<QuestionOption> QuestionOptions { get; set; }
-        public virtual DbSet<QuestionRepository> QuestionRepositories { get; set; }
         public virtual DbSet<QuestionSubject> QuestionSubjects { get; set; }
         public virtual DbSet<QuestionType> QuestionTypes { get; set; }
         public virtual DbSet<Result> Results { get; set; }

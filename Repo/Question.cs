@@ -41,7 +41,7 @@ namespace Repo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EventReport> EventReports { get; set; }
         public virtual QuestionDifficulty QuestionDifficulty { get; set; }
-        public virtual QuestionRepository QuestionRepository { get; set; }
+        public virtual QuestionBank QuestionBank { get; set; }
         public virtual QuestionSubject QuestionSubject { get; set; }
         public virtual QuestionType QuestionType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

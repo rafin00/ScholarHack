@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Repo.QuestionBank>
+
+@{
+    ViewBag.Title = "UserQuestionBank";
+}
+
+<h2>UserQuestionBank</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateBank")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionBankName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPublic)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionBankName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsPublic)
+        </td>
+      
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.QuestionBankID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.QuestionBankID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.QuestionBankID })
+        </td>
+    </tr>
+}
+
+</table>
