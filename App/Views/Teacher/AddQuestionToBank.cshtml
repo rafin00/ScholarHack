@@ -8,7 +8,31 @@
 @Html.ActionLink("Import from File","ImportFile", new {QuestionBankID=Model.QuestionBankID });
     
     <div id="manual">
-        
+      
+
+    Question : <input name="QuestionText" /><br />
+    Difficulty : 
+        @foreach (var difftype in TempData["QuestionDifficulty"] as IEnumerable<Repo.QuestionDifficulty>)
+            {
+
+            <input type="radio" name="QuestionDifficultyID" value="@difftype.QuestionDifficultyID" />@difftype.QuestionDifficultyName
+
+        }
+    Answer : <input name="QuestionAnswer" /> <br />
+       
+
+        Question : <input name="QuestionText" /><br />
+        Difficulty :
+        @foreach (var difftype in TempData["QuestionDifficulty"] as IEnumerable<Repo.QuestionDifficulty>)
+            {
+
+            <input type="radio" name="QuestionDifficultyID" value="@difftype.QuestionDifficultyID" />@difftype.QuestionDifficultyName
+
+        }
+        Answer : <input name="QuestionAnswer" /> <br />
+       
+
+        <input type="submit" value="Add"><br />
         <</div>
 
        </form>

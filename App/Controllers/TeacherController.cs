@@ -58,11 +58,11 @@ namespace App.Controllers
         [HttpGet]
         public ActionResult AddQuestionToBank(int QuestionBankID)
         {
-
-            return View(QuestionBankRepo.Get(QuestionBankID));
+            TempData["QuestionDifficulty"] = QuestionDifficultyRepo.GetAll();
+            return View(AllQuestionRepo.Get(QuestionBankID));
         }
         [HttpPost]
-        public ActionResult AddQuestionToBank(List<Question> questions, int QuestionBankID)
+        public ActionResult AddQuestionToBank(List<Question> Question, List<QuestionOption> Options, int QuestionBankID)
         {
             return null;
         }
@@ -74,6 +74,12 @@ namespace App.Controllers
 
         }
         
+        [HttpGet] 
+        public ActionResult ViewBank(int QuestionBankID)
+        {
+            ViewBag.BankID = QuestionBankID;
+            return View(AllQuestionRepo.GetAll().Where(q=>q.QuestionBankID==QuestionBankID));
+        }
 
         [HttpGet]
         public ActionResult CreateEvent() //Complete

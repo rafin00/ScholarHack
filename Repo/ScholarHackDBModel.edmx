@@ -192,7 +192,7 @@
           <Property Name="QuestionSubjectID" Type="int" />
           <Property Name="QuestionSolutionText" Type="varchar" MaxLength="50" />
           <Property Name="QuestionSolutionImage" Type="varchar" MaxLength="50" />
-          <Property Name="QuestionRepositoryID" Type="int" />
+          <Property Name="QuestionBankID" Type="int" />
         </EntityType>
         <EntityType Name="QuestionBank">
           <Key>
@@ -650,7 +650,7 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
               <PropertyRef Name="QuestionBankID" />
             </Principal>
             <Dependent Role="Question">
-              <PropertyRef Name="QuestionRepositoryID" />
+              <PropertyRef Name="QuestionBankID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1215,7 +1215,7 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
           <Property Name="QuestionSubjectID" Type="Int32" />
           <Property Name="QuestionSolutionText" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="QuestionSolutionImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="QuestionRepositoryID" Type="Int32" />
+          <Property Name="QuestionBankID" Type="Int32" />
           <NavigationProperty Name="EventAnswers" Relationship="Self.FK_EventAnswer_Question" FromRole="Question" ToRole="EventAnswer" />
           <NavigationProperty Name="EventQuestions" Relationship="Self.FK_EventQuestion_Question" FromRole="Question" ToRole="EventQuestion" />
           <NavigationProperty Name="EventReports" Relationship="Self.FK_EventReport_Question" FromRole="Question" ToRole="EventReport" />
@@ -1730,7 +1730,7 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
               <PropertyRef Name="QuestionBankID" />
             </Principal>
             <Dependent Role="Question">
-              <PropertyRef Name="QuestionRepositoryID" />
+              <PropertyRef Name="QuestionBankID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2212,7 +2212,7 @@ warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a pr
                 <ScalarProperty Name="QuestionSubjectID" ColumnName="QuestionSubjectID" />
                 <ScalarProperty Name="QuestionSolutionText" ColumnName="QuestionSolutionText" />
                 <ScalarProperty Name="QuestionSolutionImage" ColumnName="QuestionSolutionImage" />
-                <ScalarProperty Name="QuestionRepositoryID" ColumnName="QuestionRepositoryID" />
+                <ScalarProperty Name="QuestionBankID" ColumnName="QuestionBankID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

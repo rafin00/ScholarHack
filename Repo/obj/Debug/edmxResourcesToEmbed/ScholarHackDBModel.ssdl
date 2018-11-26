@@ -1,0 +1,986 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ScholarHackDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AccountType">
+    <Key>
+      <PropertyRef Name="AccountTypeID" />
+    </Key>
+    <Property Name="AccountTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Career">
+    <Key>
+      <PropertyRef Name="CareerID" />
+    </Key>
+    <Property Name="CareerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationID" Type="int" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="IsCurrent" Type="bit" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="Designation" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="CourseResult">
+    <Key>
+      <PropertyRef Name="CourseResultID" />
+    </Key>
+    <Property Name="SubjectID" Type="int" />
+    <Property Name="ExamineeID" Type="int" />
+    <Property Name="MarksObtained" Type="int" />
+    <Property Name="CourseResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EducationalHistory">
+    <Key>
+      <PropertyRef Name="EHID" />
+    </Key>
+    <Property Name="EHID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="InstitutionID" Type="int" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="IsCurrent" Type="bit" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="EventID" />
+    </Key>
+    <Property Name="EventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventName" Type="varchar" MaxLength="50" />
+    <Property Name="HostID" Type="int" />
+    <Property Name="StartTime" Type="smalldatetime" />
+    <Property Name="EndTime" Type="smalldatetime" />
+    <Property Name="EventTypeID" Type="int" />
+    <Property Name="EventStatusID" Type="int" />
+    <Property Name="IsPublic" Type="bit" Nullable="false" />
+    <Property Name="InstitutionCategoryID" Type="int" />
+    <Property Name="TotalMarks" Type="int" />
+    <Property Name="PerEasyQuestionMarks" Type="int" />
+    <Property Name="PerMediumQuestionMarks" Type="int" />
+    <Property Name="PerHardQuestionMarks" Type="int" />
+  </EntityType>
+  <EntityType Name="EventAnswer">
+    <Key>
+      <PropertyRef Name="EventAnswerID" />
+    </Key>
+    <Property Name="EventAnswerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="QuestionID" Type="int" />
+    <Property Name="ExamineeID" Type="int" />
+    <Property Name="SubmittedAnswer" Type="varchar" MaxLength="50" />
+    <Property Name="AnswerReviewText" Type="varchar" MaxLength="50" />
+    <Property Name="AnswerReviewImage" Type="varchar" MaxLength="50" />
+    <Property Name="MarksObtained" Type="int" />
+  </EntityType>
+  <EntityType Name="EventInvitation">
+    <Key>
+      <PropertyRef Name="EventInvitaionID" />
+    </Key>
+    <Property Name="EventInvitaionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvitedUser" Type="int" />
+    <Property Name="Code" Type="varchar" MaxLength="50" />
+    <Property Name="EventInvitationStatusID" Type="int" />
+    <Property Name="EventID" Type="int" />
+  </EntityType>
+  <EntityType Name="EventInvitationStatus">
+    <Key>
+      <PropertyRef Name="EventInvitationStatusId" />
+    </Key>
+    <Property Name="EventInvitationStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventInvitationStatusName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EventQuestion">
+    <Key>
+      <PropertyRef Name="EventID" />
+      <PropertyRef Name="QuestionID" />
+    </Key>
+    <Property Name="EventID" Type="int" Nullable="false" />
+    <Property Name="QuestionID" Type="int" Nullable="false" />
+    <Property Name="Marks" Type="int" />
+  </EntityType>
+  <EntityType Name="EventRegistration">
+    <Key>
+      <PropertyRef Name="EventRegistrationID" />
+    </Key>
+    <Property Name="EventRegistrationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="ExamineeID" Type="int" />
+    <Property Name="EventRegistrationStatusID" Type="int" />
+  </EntityType>
+  <EntityType Name="EventRegistrationStatus">
+    <Key>
+      <PropertyRef Name="EventRegistrationStatusID" />
+    </Key>
+    <Property Name="EventRegistrationStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventRegistrationStatusName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EventReport">
+    <Key>
+      <PropertyRef Name="EventReportID" />
+    </Key>
+    <Property Name="EventReportID" Type="int" Nullable="false" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="QuestionID" Type="int" />
+    <Property Name="Note" Type="varchar" MaxLength="50" />
+    <Property Name="ReporterID" Type="int" />
+  </EntityType>
+  <EntityType Name="EventStatus">
+    <Key>
+      <PropertyRef Name="EventStatusID" />
+    </Key>
+    <Property Name="EventStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventStatusName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EventSubject">
+    <Key>
+      <PropertyRef Name="EventID" />
+      <PropertyRef Name="SubjectID" />
+    </Key>
+    <Property Name="EventID" Type="int" Nullable="false" />
+    <Property Name="SubjectID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EventType">
+    <Key>
+      <PropertyRef Name="EventTypeID" />
+    </Key>
+    <Property Name="EventTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventTypeName" Type="varchar" MaxLength="50" />
+    <Property Name="EventTypeDescription" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Institution">
+    <Key>
+      <PropertyRef Name="InstitutionID" />
+    </Key>
+    <Property Name="InstitutionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InstitutionName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InstitutionCategory">
+    <Key>
+      <PropertyRef Name="InstitutionCategoryID" />
+    </Key>
+    <Property Name="InstitutionCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InstitutionCategoryTypeID" Type="int" />
+    <Property Name="InstitutionCategoryClass" Type="int" />
+  </EntityType>
+  <EntityType Name="InstitutionCategoryType">
+    <Key>
+      <PropertyRef Name="InstitutionCategoryTypeID" />
+    </Key>
+    <Property Name="InstitutionCategoryTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InstitutionCategoryTypeName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Organization">
+    <Key>
+      <PropertyRef Name="OrganizationID" />
+    </Key>
+    <Property Name="OrganizationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrganizationName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="QuestionID" />
+    </Key>
+    <Property Name="QuestionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionText" Type="varchar" MaxLength="50" />
+    <Property Name="QuestionDifficultyID" Type="int" />
+    <Property Name="QuestionAnswer" Type="varchar" MaxLength="50" />
+    <Property Name="QuestionTypeID" Type="int" />
+    <Property Name="QuestionChapterName" Type="varchar" MaxLength="50" />
+    <Property Name="QuestionSubjectID" Type="int" />
+    <Property Name="QuestionSolutionText" Type="varchar" MaxLength="50" />
+    <Property Name="QuestionSolutionImage" Type="varchar" MaxLength="50" />
+    <Property Name="QuestionBankID" Type="int" />
+  </EntityType>
+  <EntityType Name="QuestionBank">
+    <Key>
+      <PropertyRef Name="QuestionBankID" />
+    </Key>
+    <Property Name="QuestionBankID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionBankName" Type="varchar" MaxLength="50" />
+    <Property Name="InstitutionCategoryID" Type="int" />
+    <Property Name="OwnerID" Type="int" />
+    <Property Name="IsPublic" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuestionDifficulty">
+    <Key>
+      <PropertyRef Name="QuestionDifficultyID" />
+    </Key>
+    <Property Name="QuestionDifficultyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionDifficultyName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="QuestionOption">
+    <Key>
+      <PropertyRef Name="QuestionID" />
+      <PropertyRef Name="OptionText" />
+    </Key>
+    <Property Name="QuestionID" Type="int" Nullable="false" />
+    <Property Name="OptionText" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuestionSubject">
+    <Key>
+      <PropertyRef Name="QuestionSubjectID" />
+    </Key>
+    <Property Name="QuestionSubjectID" Type="int" Nullable="false" />
+    <Property Name="QuestionSubjectName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="QuestionType">
+    <Key>
+      <PropertyRef Name="QuestionTypeID" />
+    </Key>
+    <Property Name="QuestionTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionTypeName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="ResultID" />
+    </Key>
+    <Property Name="ResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventID" Type="int" />
+    <Property Name="ExamineeID" Type="int" />
+    <Property Name="TotalMarksObtained" Type="int" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="SubjectID" />
+    </Key>
+    <Property Name="SubjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectName" Type="varchar" MaxLength="50" />
+    <Property Name="InstitutionCategoryID" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ScholarHackDB.dbo.SystemConfig' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SystemConfig">
+    <Key>
+      <PropertyRef Name="AvgParticipantsPerEvent" />
+      <PropertyRef Name="AvgResultPerEvent" />
+    </Key>
+    <Property Name="AvgParticipantsPerEvent" Type="float" Nullable="false" />
+    <Property Name="AvgResultPerEvent" Type="float" Nullable="false" />
+    <Property Name="PerEasyQuestionMarks" Type="int" />
+    <Property Name="PerMediumQuestionMarks" Type="int" />
+    <Property Name="PerHardQuestionMarks" Type="int" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="JoiningDate" Type="smalldatetime" Nullable="false" />
+    <Property Name="AccountTypeID" Type="int" Nullable="false" />
+    <Property Name="UserTypeID" Type="int" Nullable="false" />
+    <Property Name="Portfolio" Type="varchar" MaxLength="50" />
+    <Property Name="ProfilePic" Type="varchar" MaxLength="50" />
+    <Property Name="TotalHostedEvents" Type="int" Nullable="false" />
+    <Property Name="TotalParticipants" Type="int" Nullable="false" />
+    <Property Name="TotalEventsAttended" Type="int" Nullable="false" />
+    <Property Name="StatusID" Type="int" />
+  </EntityType>
+  <EntityType Name="UserStatus">
+    <Key>
+      <PropertyRef Name="StatusID" />
+    </Key>
+    <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="UserTypeID" />
+    </Key>
+    <Property Name="UserTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Career_Organization">
+    <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
+    <End Role="Career" Type="Self.Career" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organization">
+        <PropertyRef Name="OrganizationID" />
+      </Principal>
+      <Dependent Role="Career">
+        <PropertyRef Name="OrganizationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Career_UserInfo">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="Career" Type="Self.Career" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Career">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseResult_Subject">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
+    <End Role="CourseResult" Type="Self.CourseResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="SubjectID" />
+      </Principal>
+      <Dependent Role="CourseResult">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseResult_UserInfo">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="CourseResult" Type="Self.CourseResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="CourseResult">
+        <PropertyRef Name="ExamineeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EducationalHistory_Institution">
+    <End Role="Institution" Type="Self.Institution" Multiplicity="0..1" />
+    <End Role="EducationalHistory" Type="Self.EducationalHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Institution">
+        <PropertyRef Name="InstitutionID" />
+      </Principal>
+      <Dependent Role="EducationalHistory">
+        <PropertyRef Name="InstitutionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EducationalHistory_UserInfo">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="EducationalHistory" Type="Self.EducationalHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="EducationalHistory">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Event_EventStatus">
+    <End Role="EventStatus" Type="Self.EventStatus" Multiplicity="0..1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventStatus">
+        <PropertyRef Name="EventStatusID" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="EventStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Event_EventType">
+    <End Role="EventType" Type="Self.EventType" Multiplicity="0..1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventType">
+        <PropertyRef Name="EventTypeID" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="EventTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Event_InstitutionCategory">
+    <End Role="InstitutionCategory" Type="Self.InstitutionCategory" Multiplicity="0..1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InstitutionCategory">
+        <PropertyRef Name="InstitutionCategoryID" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="InstitutionCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Event_UserInfo">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="HostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventAnswer_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
+    <End Role="EventAnswer" Type="Self.EventAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="EventAnswer">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventAnswer_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="EventAnswer" Type="Self.EventAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="QuestionID" />
+      </Principal>
+      <Dependent Role="EventAnswer">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventAnswer_UserInfo">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="EventAnswer" Type="Self.EventAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="EventAnswer">
+        <PropertyRef Name="ExamineeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventInvitation_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
+    <End Role="EventInvitation" Type="Self.EventInvitation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="EventInvitation">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventInvitation_EventInvitationStatus">
+    <End Role="EventInvitationStatus" Type="Self.EventInvitationStatus" Multiplicity="0..1" />
+    <End Role="EventInvitation" Type="Self.EventInvitation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventInvitationStatus">
+        <PropertyRef Name="EventInvitationStatusId" />
+      </Principal>
+      <Dependent Role="EventInvitation">
+        <PropertyRef Name="EventInvitationStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventInvitation_UserInfo">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="EventInvitation" Type="Self.EventInvitation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="EventInvitation">
+        <PropertyRef Name="InvitedUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventQuestion_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="EventQuestion" Type="Self.EventQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="EventQuestion">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventQuestion_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="1" />
+    <End Role="EventQuestion" Type="Self.EventQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="QuestionID" />
+      </Principal>
+      <Dependent Role="EventQuestion">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventRegistration_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
+    <End Role="EventRegistration" Type="Self.EventRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="EventRegistration">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventRegistration_EventRegistrationStatus">
+    <End Role="EventRegistrationStatus" Type="Self.EventRegistrationStatus" Multiplicity="0..1" />
+    <End Role="EventRegistration" Type="Self.EventRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventRegistrationStatus">
+        <PropertyRef Name="EventRegistrationStatusID" />
+      </Principal>
+      <Dependent Role="EventRegistration">
+        <PropertyRef Name="EventRegistrationStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventRegistration_UserInfo">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="EventRegistration" Type="Self.EventRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="EventRegistration">
+        <PropertyRef Name="ExamineeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventReport_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
+    <End Role="EventReport" Type="Self.EventReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="EventReport">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventReport_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="EventReport" Type="Self.EventReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="QuestionID" />
+      </Principal>
+      <Dependent Role="EventReport">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventReport_UserInfo">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="EventReport" Type="Self.EventReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="EventReport">
+        <PropertyRef Name="ReporterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventSubject_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="EventSubject" Type="Self.EventSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="EventSubject">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventSubject_Subject">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+    <End Role="EventSubject" Type="Self.EventSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="SubjectID" />
+      </Principal>
+      <Dependent Role="EventSubject">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InstitutionCategory_InstitutionCategoryType">
+    <End Role="InstitutionCategoryType" Type="Self.InstitutionCategoryType" Multiplicity="0..1" />
+    <End Role="InstitutionCategory" Type="Self.InstitutionCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InstitutionCategoryType">
+        <PropertyRef Name="InstitutionCategoryTypeID" />
+      </Principal>
+      <Dependent Role="InstitutionCategory">
+        <PropertyRef Name="InstitutionCategoryTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_QuestionDifficulty">
+    <End Role="QuestionDifficulty" Type="Self.QuestionDifficulty" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionDifficulty">
+        <PropertyRef Name="QuestionDifficultyID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="QuestionDifficultyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_QuestionRepository">
+    <End Role="QuestionBank" Type="Self.QuestionBank" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionBank">
+        <PropertyRef Name="QuestionBankID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="QuestionBankID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_QuestionSubject">
+    <End Role="QuestionSubject" Type="Self.QuestionSubject" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionSubject">
+        <PropertyRef Name="QuestionSubjectID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="QuestionSubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_QuestionType">
+    <End Role="QuestionType" Type="Self.QuestionType" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuestionType">
+        <PropertyRef Name="QuestionTypeID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="QuestionTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionOption_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="1" />
+    <End Role="QuestionOption" Type="Self.QuestionOption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="QuestionID" />
+      </Principal>
+      <Dependent Role="QuestionOption">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionRepository_InstitutionCategory">
+    <End Role="InstitutionCategory" Type="Self.InstitutionCategory" Multiplicity="0..1" />
+    <End Role="QuestionBank" Type="Self.QuestionBank" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InstitutionCategory">
+        <PropertyRef Name="InstitutionCategoryID" />
+      </Principal>
+      <Dependent Role="QuestionBank">
+        <PropertyRef Name="InstitutionCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionRepository_UserInfo">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="QuestionBank" Type="Self.QuestionBank" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="QuestionBank">
+        <PropertyRef Name="OwnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Result_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Result_UserInfo">
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
+    <End Role="Result" Type="Self.Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="ExamineeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subject_InstitutionCategory">
+    <End Role="InstitutionCategory" Type="Self.InstitutionCategory" Multiplicity="0..1" />
+    <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InstitutionCategory">
+        <PropertyRef Name="InstitutionCategoryID" />
+      </Principal>
+      <Dependent Role="Subject">
+        <PropertyRef Name="InstitutionCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_AccountType">
+    <End Role="AccountType" Type="Self.AccountType" Multiplicity="1" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccountType">
+        <PropertyRef Name="AccountTypeID" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="AccountTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_UserStatus">
+    <End Role="UserStatus" Type="Self.UserStatus" Multiplicity="0..1" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserStatus">
+        <PropertyRef Name="StatusID" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfo_UserType">
+    <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+    <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="UserTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ScholarHackDBModelStoreContainer">
+    <EntitySet Name="AccountType" EntityType="Self.AccountType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Career" EntityType="Self.Career" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CourseResult" EntityType="Self.CourseResult" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EducationalHistory" EntityType="Self.EducationalHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventAnswer" EntityType="Self.EventAnswer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventInvitation" EntityType="Self.EventInvitation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventInvitationStatus" EntityType="Self.EventInvitationStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventQuestion" EntityType="Self.EventQuestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventRegistration" EntityType="Self.EventRegistration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventRegistrationStatus" EntityType="Self.EventRegistrationStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventReport" EntityType="Self.EventReport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventStatus" EntityType="Self.EventStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventSubject" EntityType="Self.EventSubject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventType" EntityType="Self.EventType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Institution" EntityType="Self.Institution" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InstitutionCategory" EntityType="Self.InstitutionCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InstitutionCategoryType" EntityType="Self.InstitutionCategoryType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionBank" EntityType="Self.QuestionBank" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionDifficulty" EntityType="Self.QuestionDifficulty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionOption" EntityType="Self.QuestionOption" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionSubject" EntityType="Self.QuestionSubject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionType" EntityType="Self.QuestionType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Result" EntityType="Self.Result" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserStatus" EntityType="Self.UserStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SystemConfig" EntityType="Self.SystemConfig" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SystemConfig].[AvgParticipantsPerEvent] AS [AvgParticipantsPerEvent], 
+    [SystemConfig].[AvgResultPerEvent] AS [AvgResultPerEvent], 
+    [SystemConfig].[PerEasyQuestionMarks] AS [PerEasyQuestionMarks], 
+    [SystemConfig].[PerMediumQuestionMarks] AS [PerMediumQuestionMarks], 
+    [SystemConfig].[PerHardQuestionMarks] AS [PerHardQuestionMarks]
+    FROM [dbo].[SystemConfig] AS [SystemConfig]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Career_Organization" Association="Self.FK_Career_Organization">
+      <End Role="Organization" EntitySet="Organization" />
+      <End Role="Career" EntitySet="Career" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Career_UserInfo" Association="Self.FK_Career_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Career" EntitySet="Career" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseResult_Subject" Association="Self.FK_CourseResult_Subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="CourseResult" EntitySet="CourseResult" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseResult_UserInfo" Association="Self.FK_CourseResult_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="CourseResult" EntitySet="CourseResult" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EducationalHistory_Institution" Association="Self.FK_EducationalHistory_Institution">
+      <End Role="Institution" EntitySet="Institution" />
+      <End Role="EducationalHistory" EntitySet="EducationalHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EducationalHistory_UserInfo" Association="Self.FK_EducationalHistory_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="EducationalHistory" EntitySet="EducationalHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Event_EventStatus" Association="Self.FK_Event_EventStatus">
+      <End Role="EventStatus" EntitySet="EventStatus" />
+      <End Role="Event" EntitySet="Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Event_EventType" Association="Self.FK_Event_EventType">
+      <End Role="EventType" EntitySet="EventType" />
+      <End Role="Event" EntitySet="Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Event_InstitutionCategory" Association="Self.FK_Event_InstitutionCategory">
+      <End Role="InstitutionCategory" EntitySet="InstitutionCategory" />
+      <End Role="Event" EntitySet="Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Event_UserInfo" Association="Self.FK_Event_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Event" EntitySet="Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventAnswer_Event" Association="Self.FK_EventAnswer_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="EventAnswer" EntitySet="EventAnswer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventAnswer_Question" Association="Self.FK_EventAnswer_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="EventAnswer" EntitySet="EventAnswer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventAnswer_UserInfo" Association="Self.FK_EventAnswer_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="EventAnswer" EntitySet="EventAnswer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventInvitation_Event" Association="Self.FK_EventInvitation_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="EventInvitation" EntitySet="EventInvitation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventInvitation_EventInvitationStatus" Association="Self.FK_EventInvitation_EventInvitationStatus">
+      <End Role="EventInvitationStatus" EntitySet="EventInvitationStatus" />
+      <End Role="EventInvitation" EntitySet="EventInvitation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventInvitation_UserInfo" Association="Self.FK_EventInvitation_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="EventInvitation" EntitySet="EventInvitation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventQuestion_Event" Association="Self.FK_EventQuestion_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="EventQuestion" EntitySet="EventQuestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventQuestion_Question" Association="Self.FK_EventQuestion_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="EventQuestion" EntitySet="EventQuestion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventRegistration_Event" Association="Self.FK_EventRegistration_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="EventRegistration" EntitySet="EventRegistration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventRegistration_EventRegistrationStatus" Association="Self.FK_EventRegistration_EventRegistrationStatus">
+      <End Role="EventRegistrationStatus" EntitySet="EventRegistrationStatus" />
+      <End Role="EventRegistration" EntitySet="EventRegistration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventRegistration_UserInfo" Association="Self.FK_EventRegistration_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="EventRegistration" EntitySet="EventRegistration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventReport_Event" Association="Self.FK_EventReport_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="EventReport" EntitySet="EventReport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventReport_Question" Association="Self.FK_EventReport_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="EventReport" EntitySet="EventReport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventReport_UserInfo" Association="Self.FK_EventReport_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="EventReport" EntitySet="EventReport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventSubject_Event" Association="Self.FK_EventSubject_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="EventSubject" EntitySet="EventSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventSubject_Subject" Association="Self.FK_EventSubject_Subject">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="EventSubject" EntitySet="EventSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InstitutionCategory_InstitutionCategoryType" Association="Self.FK_InstitutionCategory_InstitutionCategoryType">
+      <End Role="InstitutionCategoryType" EntitySet="InstitutionCategoryType" />
+      <End Role="InstitutionCategory" EntitySet="InstitutionCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_QuestionDifficulty" Association="Self.FK_Question_QuestionDifficulty">
+      <End Role="QuestionDifficulty" EntitySet="QuestionDifficulty" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_QuestionRepository" Association="Self.FK_Question_QuestionRepository">
+      <End Role="QuestionBank" EntitySet="QuestionBank" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_QuestionSubject" Association="Self.FK_Question_QuestionSubject">
+      <End Role="QuestionSubject" EntitySet="QuestionSubject" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_QuestionType" Association="Self.FK_Question_QuestionType">
+      <End Role="QuestionType" EntitySet="QuestionType" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionOption_Question" Association="Self.FK_QuestionOption_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="QuestionOption" EntitySet="QuestionOption" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionRepository_InstitutionCategory" Association="Self.FK_QuestionRepository_InstitutionCategory">
+      <End Role="InstitutionCategory" EntitySet="InstitutionCategory" />
+      <End Role="QuestionBank" EntitySet="QuestionBank" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionRepository_UserInfo" Association="Self.FK_QuestionRepository_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="QuestionBank" EntitySet="QuestionBank" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Result_Event" Association="Self.FK_Result_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Result_UserInfo" Association="Self.FK_Result_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Result" EntitySet="Result" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subject_InstitutionCategory" Association="Self.FK_Subject_InstitutionCategory">
+      <End Role="InstitutionCategory" EntitySet="InstitutionCategory" />
+      <End Role="Subject" EntitySet="Subject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_AccountType" Association="Self.FK_UserInfo_AccountType">
+      <End Role="AccountType" EntitySet="AccountType" />
+      <End Role="UserInfo" EntitySet="UserInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_UserStatus" Association="Self.FK_UserInfo_UserStatus">
+      <End Role="UserStatus" EntitySet="UserStatus" />
+      <End Role="UserInfo" EntitySet="UserInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfo_UserType" Association="Self.FK_UserInfo_UserType">
+      <End Role="UserType" EntitySet="UserType" />
+      <End Role="UserInfo" EntitySet="UserInfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

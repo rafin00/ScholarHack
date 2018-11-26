@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Repo.Question>
+
+@{
+    ViewBag.Title = "ViewBank";
+}
+
+<h2>ViewBank</h2>
+
+<p>
+    @Html.ActionLink("Add Questions", "AddQuestionToBank",new {QuestionBankID= ViewBag.BankID })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionAnswer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionChapterName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionSolutionText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionSolutionImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionDifficulty.QuestionDifficultyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionBank.QuestionBankName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionSubject.QuestionSubjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuestionType.QuestionTypeName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionAnswer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionChapterName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionSolutionText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionSolutionImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionDifficulty.QuestionDifficultyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionBank.QuestionBankName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionSubject.QuestionSubjectName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuestionType.QuestionTypeName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.QuestionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.QuestionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.QuestionID })
+        </td>
+    </tr>
+}
+
+</table>

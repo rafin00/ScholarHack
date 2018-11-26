@@ -166,6 +166,7 @@
     <Content Include="Views\Teacher\AddQuestionToBank.cshtml" />
     <Content Include="Views\Teacher\CreateBank.cshtml" />
     <Content Include="Views\Teacher\ImportFile.cshtml" />
+    <Content Include="Views\Teacher\ViewBank.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

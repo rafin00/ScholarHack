@@ -32,7 +32,7 @@ namespace Repo
         public Nullable<int> QuestionSubjectID { get; set; }
         public string QuestionSolutionText { get; set; }
         public string QuestionSolutionImage { get; set; }
-        public Nullable<int> QuestionRepositoryID { get; set; }
+        public Nullable<int> QuestionBankID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EventAnswer> EventAnswers { get; set; }
